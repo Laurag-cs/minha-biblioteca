@@ -1,4 +1,4 @@
-<html>
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -107,6 +107,7 @@ body {
             <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-rose-200 to-rose-100 flex items-center justify-center text-rose-600 shadow-sm border border-rose-300/40">
                 <i class="fa-solid fa-heart text-lg"></i>
             </div>
+
             <h1 class="text-2xl font-semibold font-serif-title text-charcoal-800 tracking-tight">
                 Minha Biblioteca
             </h1>
@@ -127,6 +128,7 @@ body {
             <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold text-rose-700 bg-white/80 border border-rose-200/60 rounded-full shadow-sm mb-3">
                 <i class="fa-solid fa-sparkles text-rose-400 text-[10px]"></i>
             </span>
+
             <h2 class="text-2xl sm:text-4xl font-semibold font-serif-title text-charcoal-900 leading-snug">
                 Coleção das Minhas Revistas e Materiais!
             </h2>
@@ -136,8 +138,10 @@ body {
     </div>
 
     <div class="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between bg-white p-4 rounded-2xl border border-rose-100/80 cozy-card-shadow">
+
         <div class="relative flex-1 max-w-md">
             <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-rose-300 text-sm"></i>
+
             <input id="input-search" type="text" oninput="filterBooks()"
                 placeholder="Buscar por título ou autora..."
                 class="w-full pl-10 pr-4 py-2.5 bg-cream-50 border border-rose-100 rounded-xl text-sm text-charcoal-800 placeholder-charcoal-500/50 focus:outline-none focus:border-rose-400 focus:bg-white transition-all">
@@ -148,10 +152,12 @@ body {
                 class="cat-btn px-4 py-2 text-xs font-semibold rounded-xl bg-rose-500 text-white shadow-sm whitespace-nowrap">
                 Todos
             </button>
+
             <button onclick="setCategory('Revistas')"
                 class="cat-btn px-4 py-2 text-xs font-medium rounded-xl bg-cream-100 text-charcoal-700 hover:bg-rose-100/60 whitespace-nowrap">
                 Revistas
             </button>
+
             <button onclick="setCategory('Outros')"
                 class="cat-btn px-4 py-2 text-xs font-medium rounded-xl bg-cream-100 text-charcoal-700 hover:bg-rose-100/60 whitespace-nowrap">
                 Outros
@@ -163,10 +169,15 @@ body {
 
     <div id="empty-state"
         class="hidden flex-col items-center justify-center py-20 text-center bg-white/60 rounded-3xl border border-dashed border-rose-200">
+
         <div class="w-16 h-16 bg-rose-50 text-rose-400 rounded-2xl flex items-center justify-center text-2xl mb-3 border border-rose-100">
             <i class="fa-solid fa-heart-crack"></i>
         </div>
-        <h3 class="text-base font-semibold text-charcoal-800">Nenhum livro por aqui ainda</h3>
+
+        <h3 class="text-base font-semibold text-charcoal-800">
+            Nenhum livro por aqui ainda
+        </h3>
+
         <p class="text-charcoal-500 text-xs mt-1">
             Tente pesquisar por outro nome ou adicione um novo PDF à sua coleção.
         </p>
@@ -177,26 +188,40 @@ body {
 <div id="modal-reader" class="fixed inset-0 z-50 bg-charcoal-900/90 backdrop-blur-md flex flex-col hidden">
 
     <div class="h-16 bg-cream-50/95 border-b border-rose-100 px-4 sm:px-6 flex items-center justify-between text-charcoal-800 shadow-sm">
+
         <div class="flex items-center gap-3 overflow-hidden">
             <button onclick="closeReader()" class="p-2 hover:bg-rose-100/60 rounded-xl text-charcoal-500 hover:text-rose-700">
                 <i class="fa-solid fa-arrow-left"></i>
             </button>
+
             <div class="truncate">
-                <h2 id="reader-title" class="font-serif-title font-semibold text-sm sm:text-base text-charcoal-900 truncate">Título</h2>
-                <p id="reader-author" class="text-xs text-rose-600 font-medium truncate">Autora</p>
+                <h2 id="reader-title" class="font-serif-title font-semibold text-sm sm:text-base text-charcoal-900 truncate">
+                    Título
+                </h2>
+
+                <p id="reader-author" class="text-xs text-rose-600 font-medium truncate">
+                    Autora
+                </p>
             </div>
         </div>
 
         <div class="flex items-center gap-2 sm:gap-4">
+
             <div class="text-xs font-semibold bg-white px-3.5 py-1.5 rounded-full border border-rose-200/80 shadow-sm text-charcoal-700">
-                Página <span id="current-page" class="text-rose-600">1</span> de <span id="total-pages">--</span>
+                Página <span id="current-page" class="text-rose-600">1</span> de
+                <span id="total-pages">--</span>
             </div>
 
             <div class="hidden sm:flex items-center gap-1 bg-white p-1 rounded-xl border border-rose-200/80 shadow-sm">
+
                 <button onclick="changeZoom(-.1)" class="p-1.5 hover:bg-rose-50 rounded-lg text-charcoal-500">
                     <i class="fa-solid fa-minus text-xs"></i>
                 </button>
-                <span id="zoom-level" class="text-xs font-mono px-1.5 text-charcoal-700">100%</span>
+
+                <span id="zoom-level" class="text-xs font-mono px-1.5 text-charcoal-700">
+                    100%
+                </span>
+
                 <button onclick="changeZoom(.1)" class="p-1.5 hover:bg-rose-50 rounded-lg text-charcoal-500">
                     <i class="fa-solid fa-plus text-xs"></i>
                 </button>
@@ -212,113 +237,53 @@ body {
         </div>
     </div>
 
-    <div id="reader-container" class="flex-1 relative flex items-center justify-center p-3 sm:p-6 overflow-hidden select-none bg-stone-900/40">
+    <div id="reader-container"
+        class="flex-1 relative flex items-center justify-center p-3 sm:p-6 overflow-hidden select-none bg-stone-900/40">
 
-        <button onclick="flipPrev()" class="absolute left-3 sm:left-8 z-20 p-3.5 sm:p-4 bg-white/90 hover:bg-rose-500 text-charcoal-700 hover:text-white rounded-2xl shadow-xl border border-rose-100 transition-all">
+        <button onclick="flipPrev()"
+            class="absolute left-3 sm:left-8 z-20 p-3.5 sm:p-4 bg-white/90 hover:bg-rose-500 text-charcoal-700 hover:text-white rounded-2xl shadow-xl border border-rose-100 transition-all">
             <i class="fa-solid fa-chevron-left"></i>
         </button>
 
-        <div id="reader-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-cream-50/95 z-30">
+        <div id="reader-loading"
+            class="absolute inset-0 flex flex-col items-center justify-center bg-cream-50/95 z-30">
+
             <div class="w-12 h-12 border-4 border-rose-300 border-t-rose-600 rounded-full animate-spin mb-3"></div>
-            <p id="loading-text" class="text-rose-700 font-serif-title font-semibold">Preparando sua leitura...</p>
-            <p class="text-charcoal-500 text-xs mt-1">Convertendo páginas em formato de revista</p>
+
+            <p id="loading-text" class="text-rose-700 font-serif-title font-semibold">
+                Preparando sua leitura...
+            </p>
+
+            <p class="text-charcoal-500 text-xs mt-1">
+                Convertendo páginas em formato de revista
+            </p>
         </div>
 
-        <div id="flipbook-viewport" class="flex items-center justify-center w-full h-full transition-transform duration-200">
+        <div id="flipbook-viewport"
+            class="flex items-center justify-center w-full h-full transition-transform duration-200">
+
             <div id="flipbook" class="stpageflip-container"></div>
         </div>
 
-        <button onclick="flipNext()" class="absolute right-3 sm:right-8 z-20 p-3.5 sm:p-4 bg-white/90 hover:bg-rose-500 text-charcoal-700 hover:text-white rounded-2xl shadow-xl border border-rose-100 transition-all">
+        <button onclick="flipNext()"
+            class="absolute right-3 sm:right-8 z-20 p-3.5 sm:p-4 bg-white/90 hover:bg-rose-500 text-charcoal-700 hover:text-white rounded-2xl shadow-xl border border-rose-100 transition-all">
             <i class="fa-solid fa-chevron-right"></i>
         </button>
-    </div>
-
-    <div class="py-2.5 bg-cream-50 border-t border-rose-100 text-center text-xs text-charcoal-500 flex items-center justify-center gap-4">
-        <span><i class="fa-solid fa-hand-pointer text-rose-400 mr-1"></i> Arraste os cantos da folha para virar</span>
-        <span class="hidden sm:inline"><i class="fa-solid fa-keyboard text-rose-400 mr-1"></i> Use as setas do teclado (← / →)</span>
-    </div>
-</div>
-
-<!-- ADICIONAR PDF -->
-<div id="modal-add-book" class="fixed inset-0 z-50 bg-charcoal-900/40 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-    <div class="bg-white border border-rose-100 rounded-3xl w-full max-w-lg overflow-hidden cozy-shadow">
-
-        <div class="px-6 py-5 border-b border-rose-100 flex justify-between items-center bg-rose-50/50">
-            <h3 class="text-lg font-serif-title font-semibold text-charcoal-900 flex items-center gap-2">
-                <i class="fa-solid fa-bookmark text-rose-500 text-sm"></i>
-                Adicionar Novo PDF
-            </h3>
-            <button onclick="toggleModal('modal-add-book',false)" class="text-charcoal-500 hover:text-rose-600">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-        </div>
-
-        <form id="form-add-book" onsubmit="handleAddBook(event)" class="p-6 space-y-4">
-            <div>
-                <label class="form-label">Título do Livro ou Revista *</label>
-                <input id="new-title" type="text" required class="form-input">
-            </div>
-
-            <div>
-                <label class="form-label">Autora / Editora</label>
-                <input id="new-author" type="text" class="form-input">
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-                    <label class="form-label">Categoria</label>
-                    <select id="new-category" class="form-input">
-                        <option value="Revistas">Revistas</option>
-                        <option value="Moda & Lifestyle">Moda & Lifestyle</option>
-                        <option value="Livros">Livros</option>
-                        <option value="Outros">Outros</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="form-label">Origem do Arquivo</label>
-                    <select id="pdf-source-type" onchange="togglePdfSourceInput()" class="form-input">
-                        <option value="file">Arquivo Local (.pdf)</option>
-                        <option value="url">Link de PDF (URL)</option>
-                    </select>
-                </div>
-            </div>
-
-            <div id="source-file-container">
-                <label class="form-label">Escolher arquivo PDF *</label>
-                <input id="new-pdf-file" type="file" accept="application/pdf"
-                    class="w-full px-3 py-2 bg-cream-50 border border-rose-100 rounded-xl text-xs text-charcoal-700">
-            </div>
-
-            <div id="source-url-container" class="hidden">
-                <label class="form-label">Cole o Link do PDF *</label>
-                <input id="new-pdf-url" type="url" class="form-input">
-            </div>
-
-            <div class="pt-4 flex justify-end gap-3 border-t border-rose-100">
-                <button type="button" onclick="toggleModal('modal-add-book',false)"
-                    class="px-4 py-2 text-sm font-medium text-charcoal-500 hover:text-charcoal-800">
-                    Cancelar
-                </button>
-                <button type="submit" class="px-5 py-2 text-sm font-medium bg-rose-500 hover:bg-rose-600 text-white rounded-xl">
-                    Adicionar à Estante
-                </button>
-            </div>
-        </form>
     </div>
 </div>
 
 <script>
 const books = [
     {
-        id: 'revista-01',
-        title: 'SIRENÍDEOS',
-        author: 'Laura Gomes Rodrigues',
-        category: 'Revistas',
-        pdfUrl: 'pdfs/Sirenia.pdf',
-        coverGradient: 'from-rose-200 via-rose-100 to-cream-100'
+        id:'revista-01',
+        title:'SIRENÍDEOS',
+        author:'Laura Gomes Rodrigues',
+        category:'Revistas',
+        pdfUrl:'pdfs/Sirenia.pdf',
+        coverGradient:'from-rose-200 via-rose-100 to-cream-100'
     }
 ];
+
 let selectedCategory = 'Todos';
 let searchQuery = '';
 let pageFlipInstance = null;
@@ -329,6 +294,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('keydown', e => {
         if (document.getElementById('modal-reader').classList.contains('hidden')) return;
+
         if (e.key === 'ArrowRight') flipNext();
         if (e.key === 'ArrowLeft') flipPrev();
         if (e.key === 'Escape') closeReader();
@@ -375,6 +341,7 @@ function renderBooks() {
 
                 <div class="z-10 text-center my-auto px-2">
                     <i class="fa-solid fa-book-open text-rose-400 text-2xl sm:text-3xl mb-2"></i>
+
                     <h3 class="font-serif-title text-sm sm:text-base font-semibold text-charcoal-900 line-clamp-3 leading-snug">
                         ${escapeHtml(book.title)}
                     </h3>
@@ -386,13 +353,16 @@ function renderBooks() {
             </div>
 
             <div class="p-3 bg-white flex items-center justify-between text-xs">
+
                 <button onclick="openReader('${book.id}')"
                     class="flex items-center gap-1.5 text-rose-600 hover:text-rose-700 font-semibold">
-                    <i class="fa-solid fa-heart text-[10px]"></i> Ler Agora
+                    <i class="fa-solid fa-heart text-[10px]"></i>
+                    Ler Agora
                 </button>
 
                 <button onclick="event.stopPropagation();removeBook('${book.id}')"
-                    class="p-1 text-charcoal-500/40 hover:text-rose-600" title="Excluir">
+                    class="p-1 text-charcoal-500/40 hover:text-rose-600"
+                    title="Excluir">
                     <i class="fa-solid fa-trash-can"></i>
                 </button>
             </div>
@@ -432,15 +402,23 @@ async function openReader(bookId) {
     const container = document.getElementById('flipbook');
 
     document.getElementById('reader-title').innerText = book.title;
-    document.getElementById('reader-author').innerText = book.author || 'Desconhecida';
-    document.getElementById('loading-text').innerText = 'Preparando sua leitura...';
+    document.getElementById('reader-author').innerText =
+        book.author || 'Desconhecida';
+
+    document.getElementById('loading-text').innerText =
+        'Preparando sua leitura...';
+
+    document.getElementById('current-page').innerText = '1';
 
     modal.classList.remove('hidden');
     loading.classList.remove('hidden');
     container.innerHTML = '';
 
     if (pageFlipInstance) {
-        try { pageFlipInstance.destroy(); } catch {}
+        try {
+            pageFlipInstance.destroy();
+        } catch {}
+
         pageFlipInstance = null;
     }
 
@@ -450,15 +428,21 @@ async function openReader(bookId) {
         ).promise;
 
         const mobile = window.innerWidth < 640;
-        const width = mobile ? Math.min(window.innerWidth - 30, 360) : 440;
-        const height = mobile ? Math.floor(width * 1.35) : 590;
+        const width = mobile
+            ? Math.min(window.innerWidth - 30, 360)
+            : 440;
+
+        const height = mobile
+            ? Math.floor(width * 1.35)
+            : 590;
 
         /*
          * CAPA
-         * Cria no leitor exatamente a mesma capa visual
-         * apresentada na estante.
+         * A mesma capa apresentada na estante
+         * será a primeira página do leitor.
          */
         const cover = document.createElement('div');
+
         cover.className =
             `my-page relative flex flex-col justify-between p-6 bg-gradient-to-br ${book.coverGradient}`;
 
@@ -486,9 +470,12 @@ async function openReader(bookId) {
 
         /*
          * PÁGINAS DO PDF
+         * A página 1 do PDF será a segunda página
+         * do leitor, depois da capa.
          */
         for (let i = 1; i <= pdf.numPages; i++) {
             const pageDiv = document.createElement('div');
+
             pageDiv.className =
                 'my-page flex items-center justify-center bg-white';
 
@@ -510,7 +497,9 @@ async function openReader(bookId) {
             }).promise;
         }
 
-        document.getElementById('total-pages').innerText = pdf.numPages + 1;
+        document.getElementById('total-pages').innerText =
+            pdf.numPages + 1;
+
         loading.classList.add('hidden');
 
         /*
@@ -525,7 +514,10 @@ async function openReader(bookId) {
             minHeight:380,
             maxHeight:800,
             maxShadowOpacity:.2,
-            showCover:false,
+
+            // A primeira página funciona como capa.
+            showCover:true,
+
             mobileScrollSupport:false,
             useMouseEvents:true,
             flippingTime:650,
@@ -538,11 +530,13 @@ async function openReader(bookId) {
         );
 
         pageFlipInstance.on('flip', e => {
-            document.getElementById('current-page').innerText = e.data + 1;
+            document.getElementById('current-page').innerText =
+                e.data + 1;
         });
 
     } catch (error) {
         console.error('Erro ao carregar PDF:', error);
+
         document.getElementById('loading-text').innerText =
             'Não foi possível carregar este arquivo. Verifique se a URL é válida.';
     }
@@ -560,17 +554,27 @@ function closeReader() {
     document.getElementById('modal-reader').classList.add('hidden');
 
     if (pageFlipInstance) {
-        try { pageFlipInstance.destroy(); } catch {}
+        try {
+            pageFlipInstance.destroy();
+        } catch {}
+
         pageFlipInstance = null;
     }
 
     currentZoom = 1;
-    document.getElementById('flipbook-viewport').style.transform = 'scale(1)';
-    document.getElementById('zoom-level').innerText = '100%';
+
+    document.getElementById('flipbook-viewport').style.transform =
+        'scale(1)';
+
+    document.getElementById('zoom-level').innerText =
+        '100%';
 }
 
 function changeZoom(delta) {
-    currentZoom = Math.min(Math.max(.6, currentZoom + delta), 1.6);
+    currentZoom = Math.min(
+        Math.max(.6, currentZoom + delta),
+        1.6
+    );
 
     document.getElementById('flipbook-viewport').style.transform =
         `scale(${currentZoom})`;
@@ -591,89 +595,16 @@ function toggleFullscreen() {
 
 document.addEventListener('fullscreenchange', () => {
     document.getElementById('fullscreen-icon').className =
-        `fa-solid ${document.fullscreenElement ? 'fa-compress' : 'fa-expand'} text-sm`;
+        `fa-solid ${
+            document.fullscreenElement
+                ? 'fa-compress'
+                : 'fa-expand'
+        } text-sm`;
 });
 
-function togglePdfSourceInput() {
-    const file = document.getElementById('pdf-source-type').value === 'file';
-
-    document.getElementById('source-file-container')
-        .classList.toggle('hidden', !file);
-
-    document.getElementById('source-url-container')
-        .classList.toggle('hidden', file);
-}
-
-function handleAddBook(e) {
-    e.preventDefault();
-
-    const title = document.getElementById('new-title').value.trim();
-    const author = document.getElementById('new-author').value.trim() || 'Desconhecida';
-    const category = document.getElementById('new-category').value;
-    const source = document.getElementById('pdf-source-type').value;
-
-    const gradients = [
-        'from-rose-200 via-rose-100 to-cream-100',
-        'from-amber-100 via-rose-100 to-rose-200',
-        'from-rose-100 via-cream-200 to-rose-200',
-        'from-pink-100 via-rose-100 to-cream-50'
-    ];
-
-    const book = {
-        id:Date.now().toString(),
-        title,
-        author,
-        category,
-        coverGradient:gradients[Math.floor(Math.random() * gradients.length)]
-    };
-
-    if (source === 'file') {
-        const input = document.getElementById('new-pdf-file');
-
-        if (!input.files.length) {
-            alert('Por favor, selecione um arquivo PDF.');
-            return;
-        }
-
-        const reader = new FileReader();
-
-        reader.onload = e => {
-            book.pdfArrayBuffer = e.target.result;
-            books.unshift(book);
-            finishAddingBook();
-        };
-
-        reader.readAsArrayBuffer(input.files[0]);
-    } else {
-        const url = document.getElementById('new-pdf-url').value.trim();
-
-        if (!url) {
-            alert('Por favor, informe o link do PDF.');
-            return;
-        }
-
-        book.pdfUrl = url;
-        books.unshift(book);
-        finishAddingBook();
-    }
-}
-
-function finishAddingBook() {
-    renderBooks();
-    toggleModal('modal-add-book', false);
-    document.getElementById('form-add-book').reset();
-    togglePdfSourceInput();
-}
-
-function removeBook(id) {
-    if (confirm('Deseja remover este livro da sua estante?')) {
-        books = books.filter(book => book.id !== id);
-        renderBooks();
-    }
-}
-
 function toggleModal(id, show) {
-    document.getElementById(id).classList.toggle('hidden', !show);
+    document.getElementById(id)
+        .classList.toggle('hidden', !show);
 }
 
 function escapeHtml(text) {
@@ -685,5 +616,7 @@ function escapeHtml(text) {
         .replace(/'/g,'&#039;');
 }
 </script>
+
 </body>
 </html>
+```

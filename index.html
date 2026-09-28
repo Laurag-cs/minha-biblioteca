@@ -30,15 +30,19 @@ tailwind.config = {
 </script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
 <script>
 pdfjsLib.GlobalWorkerOptions.workerSrc =
     'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 </script>
+
 <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
 
 <style>
@@ -102,6 +106,7 @@ body {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center">
 
         <div class="flex items-center gap-3">
+
             <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-rose-200 to-rose-100 flex items-center justify-center text-rose-600 shadow-sm border border-rose-300/40">
                 <i class="fa-solid fa-heart text-lg"></i>
             </div>
@@ -109,6 +114,7 @@ body {
             <h1 class="text-2xl font-semibold font-serif-title text-charcoal-800 tracking-tight">
                 Minha Biblioteca
             </h1>
+
         </div>
 
     </div>
@@ -119,6 +125,7 @@ body {
     <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-rose-100/70 via-rose-50/50 to-cream-100 border border-rose-200/50 p-6 sm:p-10 cozy-shadow">
 
         <div class="relative z-10 max-w-2xl">
+
             <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold text-rose-700 bg-white/80 border border-rose-200/60 rounded-full shadow-sm mb-3">
                 <i class="fa-solid fa-sparkles text-rose-400 text-[10px]"></i>
             </span>
@@ -126,14 +133,17 @@ body {
             <h2 class="text-2xl sm:text-4xl font-semibold font-serif-title text-charcoal-900 leading-snug">
                 Coleção das Minhas Revistas e Materiais!
             </h2>
+
         </div>
 
         <i class="fa-solid fa-star text-rose-200/40 text-[180px] absolute -right-6 -bottom-8 pointer-events-none transform -rotate-12"></i>
+
     </div>
 
     <div class="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between bg-white p-4 rounded-2xl border border-rose-100/80 cozy-card-shadow">
 
         <div class="relative flex-1 max-w-md">
+
             <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-rose-300 text-sm"></i>
 
             <input
@@ -142,6 +152,7 @@ body {
                 oninput="filterBooks()"
                 placeholder="Buscar por título ou autora..."
                 class="w-full pl-10 pr-4 py-2.5 bg-cream-50 border border-rose-100 rounded-xl text-sm text-charcoal-800 placeholder-charcoal-500/50 focus:outline-none focus:border-rose-400 focus:bg-white transition-all">
+
         </div>
 
         <div id="category-filters" class="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0">
@@ -182,10 +193,13 @@ body {
         <p class="text-charcoal-500 text-xs mt-1">
             Tente pesquisar por outro nome ou categoria.
         </p>
+
     </div>
+
 </main>
 
 <!-- LEITOR -->
+
 <div id="modal-reader"
     class="fixed inset-0 z-50 bg-charcoal-900/90 backdrop-blur-md flex flex-col hidden">
 
@@ -199,6 +213,7 @@ body {
             </button>
 
             <div class="truncate">
+
                 <h2 id="reader-title"
                     class="font-serif-title font-semibold text-sm sm:text-base text-charcoal-900 truncate">
                     Título
@@ -208,6 +223,7 @@ body {
                     class="text-xs text-rose-600 font-medium truncate">
                     Autora
                 </p>
+
             </div>
 
         </div>
@@ -251,6 +267,7 @@ body {
             </button>
 
         </div>
+
     </div>
 
     <div id="reader-container"
@@ -293,14 +310,14 @@ body {
 </div>
 
 <script>
+
 const books = [
     {
         id:'revista-01',
         title:'SIRENÍDEOS',
         author:'Laura Gomes Rodrigues',
         category:'Revistas',
-        pdfUrl:'pdfs/Sirenia.pdf',
-        coverGradient:'from-rose-200 via-rose-100 to-cream-100'
+        pdfUrl:'pdfs/Sirenia.pdf'
     }
 ];
 
@@ -310,18 +327,33 @@ let pageFlipInstance = null;
 let currentZoom = 1;
 
 window.addEventListener('DOMContentLoaded', () => {
+
     renderBooks();
 
     window.addEventListener('keydown', e => {
-        if (document.getElementById('modal-reader').classList.contains('hidden')) return;
 
-        if (e.key === 'ArrowRight') flipNext();
-        if (e.key === 'ArrowLeft') flipPrev();
-        if (e.key === 'Escape') closeReader();
+        if (document.getElementById('modal-reader').classList.contains('hidden')) {
+            return;
+        }
+
+        if (e.key === 'ArrowRight') {
+            flipNext();
+        }
+
+        if (e.key === 'ArrowLeft') {
+            flipPrev();
+        }
+
+        if (e.key === 'Escape') {
+            closeReader();
+        }
+
     });
+
 });
 
 function renderBooks() {
+
     const grid = document.getElementById('books-grid');
     const empty = document.getElementById('empty-state');
     const query = searchQuery.toLowerCase();
@@ -337,8 +369,10 @@ function renderBooks() {
     );
 
     if (!filtered.length) {
+
         empty.classList.remove('hidden');
         empty.classList.add('flex');
+
         return;
     }
 
@@ -346,34 +380,23 @@ function renderBooks() {
     empty.classList.remove('flex');
 
     filtered.forEach(book => {
+
         const card = document.createElement('div');
 
         card.className =
             'group flex flex-col bg-white rounded-2xl border border-rose-100 overflow-hidden cozy-card-shadow transition-all duration-300 hover:-translate-y-1';
 
         card.innerHTML = `
-            <div onclick="openReader('${book.id}')"
-                class="relative aspect-[3/4] w-full bg-gradient-to-br ${book.coverGradient} p-4 flex flex-col justify-between border-b border-rose-100/60 cursor-pointer">
 
-                <div class="absolute inset-y-0 left-0 w-2.5 bg-rose-900/10 border-r border-white/30"></div>
+            <div id="cover-${book.id}"
+                onclick="openReader('${book.id}')"
+                class="relative aspect-[3/4] w-full bg-white border-b border-rose-100/60 cursor-pointer overflow-hidden">
 
-                <div class="self-end bg-white/80 px-2.5 py-0.5 rounded-full text-[10px] font-semibold text-rose-700 border border-rose-200/50">
-                    ${escapeHtml(book.category)}
-                </div>
+                <div class="absolute inset-0 flex items-center justify-center bg-cream-100 text-rose-400">
 
-                <div class="z-10 text-center my-auto px-2">
-
-                    <i class="fa-solid fa-book-open text-rose-400 text-2xl sm:text-3xl mb-2"></i>
-
-                    <h3 class="font-serif-title text-sm sm:text-base font-semibold text-charcoal-900 line-clamp-3 leading-snug">
-                        ${escapeHtml(book.title)}
-                    </h3>
+                    <i class="fa-solid fa-book-open text-2xl"></i>
 
                 </div>
-
-                <p class="z-10 text-center text-[11px] text-charcoal-500 font-medium truncate">
-                    ${escapeHtml(book.author)}
-                </p>
 
             </div>
 
@@ -391,10 +414,61 @@ function renderBooks() {
         `;
 
         grid.appendChild(card);
+
+        loadShelfCover(book);
+
     });
 }
 
+async function loadShelfCover(book) {
+
+    const container =
+        document.getElementById(`cover-${book.id}`);
+
+    if (!container) {
+        return;
+    }
+
+    try {
+
+        const pdf =
+            await pdfjsLib.getDocument(book.pdfUrl).promise;
+
+        const page =
+            await pdf.getPage(1);
+
+        const viewport =
+            page.getViewport({ scale: 1.5 });
+
+        const canvas =
+            document.createElement('canvas');
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        canvas.className =
+            'w-full h-full object-contain';
+
+        await page.render({
+            canvasContext: canvas.getContext('2d'),
+            viewport
+        }).promise;
+
+        container.innerHTML = '';
+        container.appendChild(canvas);
+
+    } catch (error) {
+
+        console.error(
+            'Erro ao carregar capa:',
+            error
+        );
+
+    }
+}
+
 function filterBooks() {
+
     searchQuery =
         document.getElementById('input-search').value;
 
@@ -402,9 +476,11 @@ function filterBooks() {
 }
 
 function setCategory(category) {
+
     selectedCategory = category;
 
     document.querySelectorAll('.cat-btn').forEach(btn => {
+
         const active =
             btn.innerText.trim() === category;
 
@@ -413,18 +489,29 @@ function setCategory(category) {
                 ? 'font-semibold bg-rose-500 text-white shadow-sm'
                 : 'font-medium bg-cream-100 text-charcoal-700 hover:bg-rose-100/60'
         }`;
+
     });
 
     renderBooks();
 }
 
 async function openReader(bookId) {
-    const book = books.find(b => b.id === bookId);
-    if (!book) return;
 
-    const modal = document.getElementById('modal-reader');
-    const loading = document.getElementById('reader-loading');
-    const container = document.getElementById('flipbook');
+    const book =
+        books.find(b => b.id === bookId);
+
+    if (!book) {
+        return;
+    }
+
+    const modal =
+        document.getElementById('modal-reader');
+
+    const loading =
+        document.getElementById('reader-loading');
+
+    const container =
+        document.getElementById('flipbook');
 
     document.getElementById('reader-title').innerText =
         book.title;
@@ -435,13 +522,19 @@ async function openReader(bookId) {
     document.getElementById('loading-text').innerText =
         'Preparando sua leitura...';
 
-    document.getElementById('current-page').innerText = '1';
+    document.getElementById('current-page').innerText =
+        '1';
+
+    document.getElementById('total-pages').innerText =
+        '--';
 
     modal.classList.remove('hidden');
     loading.classList.remove('hidden');
+
     container.innerHTML = '';
 
     if (pageFlipInstance) {
+
         try {
             pageFlipInstance.destroy();
         } catch {}
@@ -450,11 +543,12 @@ async function openReader(bookId) {
     }
 
     try {
-        const pdf = await pdfjsLib.getDocument(
-            book.pdfUrl
-        ).promise;
 
-        const mobile = window.innerWidth < 640;
+        const pdf =
+            await pdfjsLib.getDocument(book.pdfUrl).promise;
+
+        const mobile =
+            window.innerWidth < 640;
 
         const width = mobile
             ? Math.min(window.innerWidth - 30, 360)
@@ -465,50 +559,20 @@ async function openReader(bookId) {
             : 590;
 
         /*
-         * CAPA
-         * A mesma capa da estante será
-         * a primeira página do leitor.
+         * Cada página vem diretamente do PDF.
+         * A página 1 do PDF é a capa.
          */
-        const cover = document.createElement('div');
 
-        cover.className =
-            `my-page relative flex flex-col justify-between p-6 bg-gradient-to-br ${book.coverGradient}`;
-
-        cover.innerHTML = `
-            <div class="absolute inset-y-0 left-0 w-3 bg-rose-900/10 border-r border-white/30"></div>
-
-            <div class="self-end bg-white/80 px-3 py-1 rounded-full text-xs font-semibold text-rose-700 border border-rose-200/50">
-                ${escapeHtml(book.category)}
-            </div>
-
-            <div class="text-center my-auto px-5">
-
-                <i class="fa-solid fa-book-open text-rose-400 text-5xl mb-5"></i>
-
-                <h2 class="font-serif-title text-2xl sm:text-3xl font-semibold text-charcoal-900 leading-snug">
-                    ${escapeHtml(book.title)}
-                </h2>
-
-            </div>
-
-            <p class="text-center text-sm text-charcoal-500 font-medium truncate">
-                ${escapeHtml(book.author)}
-            </p>
-        `;
-
-        container.appendChild(cover);
-
-        /*
-         * PÁGINAS DO PDF
-         */
         for (let i = 1; i <= pdf.numPages; i++) {
 
-            const pageDiv = document.createElement('div');
+            const pageDiv =
+                document.createElement('div');
 
             pageDiv.className =
                 'my-page flex items-center justify-center bg-white';
 
-            const canvas = document.createElement('canvas');
+            const canvas =
+                document.createElement('canvas');
 
             canvas.className =
                 'w-full h-full object-contain';
@@ -516,81 +580,108 @@ async function openReader(bookId) {
             pageDiv.appendChild(canvas);
             container.appendChild(pageDiv);
 
-            const page = await pdf.getPage(i);
-            const viewport = page.getViewport({ scale:1.5 });
+            const page =
+                await pdf.getPage(i);
 
-            canvas.width = viewport.width;
-            canvas.height = viewport.height;
+            const viewport =
+                page.getViewport({ scale: 1.5 });
+
+            canvas.width =
+                viewport.width;
+
+            canvas.height =
+                viewport.height;
 
             await page.render({
-                canvasContext:canvas.getContext('2d'),
+                canvasContext:
+                    canvas.getContext('2d'),
                 viewport
             }).promise;
+
         }
 
         document.getElementById('total-pages').innerText =
-            pdf.numPages + 1;
+            pdf.numPages;
 
         loading.classList.add('hidden');
 
-        /*
-         * LEITOR
-         */
-        pageFlipInstance = new St.PageFlip(container, {
-            width,
-            height,
-            size:'fixed',
-            minWidth:280,
-            maxWidth:600,
-            minHeight:380,
-            maxHeight:800,
-            maxShadowOpacity:.2,
+        pageFlipInstance =
+            new St.PageFlip(container, {
 
-            // A primeira página é tratada como capa.
-            showCover:true,
+                width,
+                height,
 
-            mobileScrollSupport:false,
-            useMouseEvents:true,
-            flippingTime:650,
-            drawShadow:true,
-            autoSize:true
-        });
+                size:'fixed',
+
+                minWidth:280,
+                maxWidth:600,
+
+                minHeight:380,
+                maxHeight:800,
+
+                maxShadowOpacity:.2,
+
+                showCover:true,
+
+                mobileScrollSupport:false,
+
+                useMouseEvents:true,
+
+                flippingTime:650,
+
+                drawShadow:true,
+
+                autoSize:true
+
+            });
 
         pageFlipInstance.loadFromHTML(
             container.querySelectorAll('.my-page')
         );
 
         pageFlipInstance.on('flip', e => {
+
             document.getElementById('current-page').innerText =
                 e.data + 1;
+
         });
 
     } catch (error) {
 
-        console.error('Erro ao carregar PDF:', error);
+        console.error(
+            'Erro ao carregar PDF:',
+            error
+        );
 
         document.getElementById('loading-text').innerText =
             'Não foi possível carregar este arquivo. Verifique se o PDF está disponível.';
+
     }
 }
 
 function flipNext() {
+
     if (pageFlipInstance) {
         pageFlipInstance.flipNext();
     }
+
 }
 
 function flipPrev() {
+
     if (pageFlipInstance) {
         pageFlipInstance.flipPrev();
     }
+
 }
 
 function closeReader() {
+
     document.getElementById('modal-reader')
         .classList.add('hidden');
 
     if (pageFlipInstance) {
+
         try {
             pageFlipInstance.destroy();
         } catch {}
@@ -608,46 +699,52 @@ function closeReader() {
 }
 
 function changeZoom(delta) {
+
     currentZoom = Math.min(
         Math.max(.6, currentZoom + delta),
         1.6
     );
 
     document.getElementById('flipbook-viewport')
-        .style.transform = `scale(${currentZoom})`;
+        .style.transform =
+        `scale(${currentZoom})`;
 
     document.getElementById('zoom-level')
-        .innerText = `${Math.round(currentZoom * 100)}%`;
+        .innerText =
+        `${Math.round(currentZoom * 100)}%`;
 }
 
 function toggleFullscreen() {
+
     const modal =
         document.getElementById('modal-reader');
 
     if (!document.fullscreenElement) {
-        modal.requestFullscreen();
+
+        if (modal.requestFullscreen) {
+            modal.requestFullscreen();
+        }
+
     } else {
-        document.exitFullscreen();
+
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+
     }
 }
 
 document.addEventListener('fullscreenchange', () => {
+
     document.getElementById('fullscreen-icon').className =
         `fa-solid ${
             document.fullscreenElement
                 ? 'fa-compress'
                 : 'fa-expand'
         } text-sm`;
+
 });
 
-function escapeHtml(text) {
-    return String(text)
-        .replace(/&/g,'&amp;')
-        .replace(/</g,'&lt;')
-        .replace(/>/g,'&gt;')
-        .replace(/"/g,'&quot;')
-        .replace(/'/g,'&#039;');
-}
 </script>
 
 </body>

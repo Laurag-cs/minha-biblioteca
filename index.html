@@ -1,4 +1,3 @@
-<html>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -30,14 +29,11 @@ tailwind.config = {
 </script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-
 <script>
 pdfjsLib.GlobalWorkerOptions.workerSrc =
     'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
@@ -51,52 +47,20 @@ body {
     background:#fcfbfa;
     color:#3d3538;
 }
-
-.font-serif-title {
-    font-family:'Playfair Display',serif;
-}
-
-::-webkit-scrollbar {
-    width:7px;
-    height:7px;
-}
-
-::-webkit-scrollbar-track {
-    background:#f8f5f0;
-}
-
-::-webkit-scrollbar-thumb {
-    background:#f1b7b7;
-    border-radius:999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background:#d8708c;
-}
-
-.cozy-shadow {
-    box-shadow:0 12px 35px -10px rgba(180,120,135,.12);
-}
-
-.cozy-card-shadow {
-    box-shadow:0 8px 24px -6px rgba(160,100,115,.08);
-}
-
+.font-serif-title { font-family:'Playfair Display',serif; }
+::-webkit-scrollbar { width:7px; height:7px; }
+::-webkit-scrollbar-track { background:#f8f5f0; }
+::-webkit-scrollbar-thumb { background:#f1b7b7; border-radius:999px; }
+::-webkit-scrollbar-thumb:hover { background:#d8708c; }
+.cozy-shadow { box-shadow:0 12px 35px -10px rgba(180,120,135,.12); }
+.cozy-card-shadow { box-shadow:0 8px 24px -6px rgba(160,100,115,.08); }
 .glass-header {
     background:rgba(253,247,247,.85);
     backdrop-filter:blur(12px);
     border-bottom:1px solid rgba(241,183,183,.3);
 }
-
-.stpageflip-container {
-    margin:auto;
-    box-shadow:0 20px 40px -15px rgba(120,70,85,.25);
-}
-
-.my-page {
-    background:#fff;
-    overflow:hidden;
-}
+.stpageflip-container { margin:auto; box-shadow:0 20px 40px -15px rgba(120,70,85,.25); }
+.my-page { background:#fff; overflow:hidden; }
 </style>
 </head>
 
@@ -104,213 +68,116 @@ body {
 
 <header class="sticky top-0 z-30 glass-header">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center">
-
         <div class="flex items-center gap-3">
-
             <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-rose-200 to-rose-100 flex items-center justify-center text-rose-600 shadow-sm border border-rose-300/40">
                 <i class="fa-solid fa-heart text-lg"></i>
             </div>
-
             <h1 class="text-2xl font-semibold font-serif-title text-charcoal-800 tracking-tight">
                 Minha Biblioteca
             </h1>
-
         </div>
-
     </div>
 </header>
 
 <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-8">
-
     <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-rose-100/70 via-rose-50/50 to-cream-100 border border-rose-200/50 p-6 sm:p-10 cozy-shadow">
-
         <div class="relative z-10 max-w-2xl">
-
             <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold text-rose-700 bg-white/80 border border-rose-200/60 rounded-full shadow-sm mb-3">
                 <i class="fa-solid fa-sparkles text-rose-400 text-[10px]"></i>
             </span>
-
             <h2 class="text-2xl sm:text-4xl font-semibold font-serif-title text-charcoal-900 leading-snug">
                 Coleção das Minhas Revistas e Materiais!
             </h2>
-
         </div>
-
         <i class="fa-solid fa-star text-rose-200/40 text-[180px] absolute -right-6 -bottom-8 pointer-events-none transform -rotate-12"></i>
-
     </div>
 
     <div class="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between bg-white p-4 rounded-2xl border border-rose-100/80 cozy-card-shadow">
-
         <div class="relative flex-1 max-w-md">
-
             <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-rose-300 text-sm"></i>
-
             <input
                 id="input-search"
                 type="text"
                 oninput="filterBooks()"
                 placeholder="Buscar por título ou autora..."
                 class="w-full pl-10 pr-4 py-2.5 bg-cream-50 border border-rose-100 rounded-xl text-sm text-charcoal-800 placeholder-charcoal-500/50 focus:outline-none focus:border-rose-400 focus:bg-white transition-all">
-
         </div>
 
         <div id="category-filters" class="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0">
-
-            <button onclick="setCategory('Todos')"
-                class="cat-btn px-4 py-2 text-xs font-semibold rounded-xl bg-rose-500 text-white shadow-sm whitespace-nowrap">
-                Todos
-            </button>
-
-            <button onclick="setCategory('Revistas')"
-                class="cat-btn px-4 py-2 text-xs font-medium rounded-xl bg-cream-100 text-charcoal-700 hover:bg-rose-100/60 whitespace-nowrap">
-                Revistas
-            </button>
-
-            <button onclick="setCategory('Outros')"
-                class="cat-btn px-4 py-2 text-xs font-medium rounded-xl bg-cream-100 text-charcoal-700 hover:bg-rose-100/60 whitespace-nowrap">
-                Outros
-            </button>
-
+            <button onclick="setCategory('Todos')" class="cat-btn px-4 py-2 text-xs font-semibold rounded-xl bg-rose-500 text-white shadow-sm whitespace-nowrap">Todos</button>
+            <button onclick="setCategory('Revistas')" class="cat-btn px-4 py-2 text-xs font-medium rounded-xl bg-cream-100 text-charcoal-700 hover:bg-rose-100/60 whitespace-nowrap">Revistas</button>
+            <button onclick="setCategory('Outros')" class="cat-btn px-4 py-2 text-xs font-medium rounded-xl bg-cream-100 text-charcoal-700 hover:bg-rose-100/60 whitespace-nowrap">Outros</button>
         </div>
     </div>
 
-    <div id="books-grid"
-        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 sm:gap-6">
-    </div>
+    <div id="books-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 sm:gap-6"></div>
 
-    <div id="empty-state"
-        class="hidden flex-col items-center justify-center py-20 text-center bg-white/60 rounded-3xl border border-dashed border-rose-200">
-
+    <div id="empty-state" class="hidden flex-col items-center justify-center py-20 text-center bg-white/60 rounded-3xl border border-dashed border-rose-200">
         <div class="w-16 h-16 bg-rose-50 text-rose-400 rounded-2xl flex items-center justify-center text-2xl mb-3 border border-rose-100">
             <i class="fa-solid fa-heart-crack"></i>
         </div>
-
-        <h3 class="text-base font-semibold text-charcoal-800">
-            Nenhuma revista encontrada
-        </h3>
-
-        <p class="text-charcoal-500 text-xs mt-1">
-            Tente pesquisar por outro nome ou categoria.
-        </p>
-
+        <h3 class="text-base font-semibold text-charcoal-800">Nenhuma revista encontrada</h3>
+        <p class="text-charcoal-500 text-xs mt-1">Tente pesquisar por outro nome ou categoria.</p>
     </div>
-
 </main>
 
 <!-- LEITOR -->
-
-<div id="modal-reader"
-    class="fixed inset-0 z-50 bg-charcoal-900/90 backdrop-blur-md flex flex-col hidden">
-
+<div id="modal-reader" class="fixed inset-0 z-50 bg-charcoal-900/90 backdrop-blur-md flex flex-col hidden">
     <div class="h-16 bg-cream-50/95 border-b border-rose-100 px-4 sm:px-6 flex items-center justify-between text-charcoal-800 shadow-sm">
-
         <div class="flex items-center gap-3 overflow-hidden">
-
-            <button onclick="closeReader()"
-                class="p-2 hover:bg-rose-100/60 rounded-xl text-charcoal-500 hover:text-rose-700">
+            <button onclick="closeReader()" class="p-2 hover:bg-rose-100/60 rounded-xl text-charcoal-500 hover:text-rose-700">
                 <i class="fa-solid fa-arrow-left"></i>
             </button>
-
             <div class="truncate">
-
-                <h2 id="reader-title"
-                    class="font-serif-title font-semibold text-sm sm:text-base text-charcoal-900 truncate">
-                    Título
-                </h2>
-
-                <p id="reader-author"
-                    class="text-xs text-rose-600 font-medium truncate">
-                    Autora
-                </p>
-
+                <h2 id="reader-title" class="font-serif-title font-semibold text-sm sm:text-base text-charcoal-900 truncate">Título</h2>
+                <p id="reader-author" class="text-xs text-rose-600 font-medium truncate">Autora</p>
             </div>
-
         </div>
 
         <div class="flex items-center gap-2 sm:gap-4">
-
             <div class="text-xs font-semibold bg-white px-3.5 py-1.5 rounded-full border border-rose-200/80 shadow-sm text-charcoal-700">
-                Página
-                <span id="current-page" class="text-rose-600">1</span>
-                de
-                <span id="total-pages">--</span>
+                Página <span id="current-page" class="text-rose-600">1</span> de <span id="total-pages">--</span>
             </div>
-
             <div class="hidden sm:flex items-center gap-1 bg-white p-1 rounded-xl border border-rose-200/80 shadow-sm">
-
-                <button onclick="changeZoom(-.1)"
-                    class="p-1.5 hover:bg-rose-50 rounded-lg text-charcoal-500">
+                <button onclick="changeZoom(-.1)" class="p-1.5 hover:bg-rose-50 rounded-lg text-charcoal-500">
                     <i class="fa-solid fa-minus text-xs"></i>
                 </button>
-
-                <span id="zoom-level"
-                    class="text-xs font-mono px-1.5 text-charcoal-700">
-                    100%
-                </span>
-
-                <button onclick="changeZoom(.1)"
-                    class="p-1.5 hover:bg-rose-50 rounded-lg text-charcoal-500">
+                <span id="zoom-level" class="text-xs font-mono px-1.5 text-charcoal-700">100%</span>
+                <button onclick="changeZoom(.1)" class="p-1.5 hover:bg-rose-50 rounded-lg text-charcoal-500">
                     <i class="fa-solid fa-plus text-xs"></i>
                 </button>
-
             </div>
-
-            <button onclick="toggleFullscreen()"
-                class="p-2 hover:bg-rose-100/60 rounded-xl text-charcoal-500 hover:text-rose-700">
+            <button onclick="toggleFullscreen()" class="p-2 hover:bg-rose-100/60 rounded-xl text-charcoal-500 hover:text-rose-700">
                 <i id="fullscreen-icon" class="fa-solid fa-expand text-sm"></i>
             </button>
-
-            <button onclick="closeReader()"
-                class="p-2 hover:bg-rose-100 text-rose-700 rounded-xl">
+            <button onclick="closeReader()" class="p-2 hover:bg-rose-100 text-rose-700 rounded-xl">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
-
         </div>
-
     </div>
 
-    <div id="reader-container"
-        class="flex-1 relative flex items-center justify-center p-3 sm:p-6 overflow-hidden select-none bg-stone-900/40">
-
-        <button onclick="flipPrev()"
-            class="absolute left-3 sm:left-8 z-20 p-3.5 sm:p-4 bg-white/90 hover:bg-rose-500 text-charcoal-700 hover:text-white rounded-2xl shadow-xl border border-rose-100 transition-all">
+    <div id="reader-container" class="flex-1 relative flex items-center justify-center p-3 sm:p-6 overflow-hidden select-none bg-stone-900/40">
+        <button onclick="flipPrev()" class="absolute left-3 sm:left-8 z-20 p-3.5 sm:p-4 bg-white/90 hover:bg-rose-500 text-charcoal-700 hover:text-white rounded-2xl shadow-xl border border-rose-100 transition-all">
             <i class="fa-solid fa-chevron-left"></i>
         </button>
 
-        <div id="reader-loading"
-            class="absolute inset-0 flex flex-col items-center justify-center bg-cream-50/95 z-30">
-
+        <div id="reader-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-cream-50/95 z-30">
             <div class="w-12 h-12 border-4 border-rose-300 border-t-rose-600 rounded-full animate-spin mb-3"></div>
-
-            <p id="loading-text"
-                class="text-rose-700 font-serif-title font-semibold">
-                Preparando sua leitura...
-            </p>
-
-            <p class="text-charcoal-500 text-xs mt-1">
-                Convertendo páginas em formato de revista
-            </p>
-
+            <p id="loading-text" class="text-rose-700 font-serif-title font-semibold">Preparando sua leitura...</p>
+            <p class="text-charcoal-500 text-xs mt-1">Carregando visualização</p>
         </div>
 
-        <div id="flipbook-viewport"
-            class="flex items-center justify-center w-full h-full transition-transform duration-200">
-
+        <div id="flipbook-viewport" class="flex items-center justify-center w-full h-full transition-transform duration-200">
             <div id="flipbook" class="stpageflip-container"></div>
-
         </div>
 
-        <button onclick="flipNext()"
-            class="absolute right-3 sm:right-8 z-20 p-3.5 sm:p-4 bg-white/90 hover:bg-rose-500 text-charcoal-700 hover:text-white rounded-2xl shadow-xl border border-rose-100 transition-all">
+        <button onclick="flipNext()" class="absolute right-3 sm:right-8 z-20 p-3.5 sm:p-4 bg-white/90 hover:bg-rose-500 text-charcoal-700 hover:text-white rounded-2xl shadow-xl border border-rose-100 transition-all">
             <i class="fa-solid fa-chevron-right"></i>
         </button>
-
     </div>
 </div>
 
 <script>
-
 const books = [
     {
         id:'revista-01',
@@ -325,35 +192,27 @@ let selectedCategory = 'Todos';
 let searchQuery = '';
 let pageFlipInstance = null;
 let currentZoom = 1;
+const pdfCache = {};
 
 window.addEventListener('DOMContentLoaded', () => {
-
     renderBooks();
 
     window.addEventListener('keydown', e => {
-
-        if (document.getElementById('modal-reader').classList.contains('hidden')) {
-            return;
-        }
-
-        if (e.key === 'ArrowRight') {
-            flipNext();
-        }
-
-        if (e.key === 'ArrowLeft') {
-            flipPrev();
-        }
-
-        if (e.key === 'Escape') {
-            closeReader();
-        }
-
+        if (document.getElementById('modal-reader').classList.contains('hidden')) return;
+        if (e.key === 'ArrowRight') flipNext();
+        if (e.key === 'ArrowLeft') flipPrev();
+        if (e.key === 'Escape') closeReader();
     });
-
 });
 
-function renderBooks() {
+function getPdfDocument(url) {
+    if (!pdfCache[url]) {
+        pdfCache[url] = pdfjsLib.getDocument(url).promise;
+    }
+    return pdfCache[url];
+}
 
+function renderBooks() {
     const grid = document.getElementById('books-grid');
     const empty = document.getElementById('empty-state');
     const query = searchQuery.toLowerCase();
@@ -362,17 +221,12 @@ function renderBooks() {
 
     const filtered = books.filter(book =>
         (selectedCategory === 'Todos' || book.category === selectedCategory) &&
-        (
-            book.title.toLowerCase().includes(query) ||
-            book.author.toLowerCase().includes(query)
-        )
+        (book.title.toLowerCase().includes(query) || book.author.toLowerCase().includes(query))
     );
 
     if (!filtered.length) {
-
         empty.classList.remove('hidden');
         empty.classList.add('flex');
-
         return;
     }
 
@@ -380,153 +234,99 @@ function renderBooks() {
     empty.classList.remove('flex');
 
     filtered.forEach(book => {
-
         const card = document.createElement('div');
-
-        card.className =
-            'group flex flex-col bg-white rounded-2xl border border-rose-100 overflow-hidden cozy-card-shadow transition-all duration-300 hover:-translate-y-1';
-
+        card.className = 'group flex flex-col bg-white rounded-2xl border border-rose-100 overflow-hidden cozy-card-shadow transition-all duration-300 hover:-translate-y-1';
         card.innerHTML = `
-
-            <div id="cover-${book.id}"
-                onclick="openReader('${book.id}')"
-                class="relative aspect-[3/4] w-full bg-white border-b border-rose-100/60 cursor-pointer overflow-hidden">
-
-                <div class="absolute inset-0 flex items-center justify-center bg-cream-100 text-rose-400">
-
-                    <i class="fa-solid fa-book-open text-2xl"></i>
-
+            <div id="cover-${book.id}" onclick="openReader('${book.id}')" class="relative aspect-[3/4] w-full bg-white border-b border-rose-100/60 cursor-pointer overflow-hidden flex items-center justify-center">
+                <div class="flex items-center justify-center text-rose-300">
+                    <i class="fa-solid fa-spinner animate-spin text-xl"></i>
                 </div>
-
             </div>
-
             <div class="p-3 bg-white">
-
-                <button onclick="openReader('${book.id}')"
-                    class="flex items-center gap-1.5 text-rose-600 hover:text-rose-700 font-semibold text-xs">
-
-                    <i class="fa-solid fa-heart text-[10px]"></i>
-                    Ler Agora
-
+                <h3 class="font-serif-title font-semibold text-xs text-charcoal-800 truncate mb-1">${book.title}</h3>
+                <button onclick="openReader('${book.id}')" class="flex items-center gap-1.5 text-rose-600 hover:text-rose-700 font-semibold text-xs">
+                    <i class="fa-solid fa-heart text-[10px]"></i> Ler Agora
                 </button>
-
             </div>
         `;
-
         grid.appendChild(card);
-
         loadShelfCover(book);
-
     });
 }
 
 async function loadShelfCover(book) {
+    const container = document.getElementById(`cover-${book.id}`);
+    if (!container) return;
 
-    const container =
-        document.getElementById(`cover-${book.id}`);
-
-    if (!container) {
+    // Tenta carregar do Cache Local (localStorage)
+    const cachedCover = localStorage.getItem(`cover_cache_${book.id}`);
+    if (cachedCover) {
+        const img = new Image();
+        img.src = cachedCover;
+        img.className = 'w-full h-full object-contain';
+        container.innerHTML = '';
+        container.appendChild(img);
         return;
     }
 
     try {
-
-        const pdf =
-            await pdfjsLib.getDocument(book.pdfUrl).promise;
-
-        const page =
-            await pdf.getPage(1);
-
-        const viewport =
-            page.getViewport({ scale: 1.5 });
-
-        const canvas =
-            document.createElement('canvas');
-
+        const pdf = await getPdfDocument(book.pdfUrl);
+        const page = await pdf.getPage(1);
+        
+        // Renderiza em escala menor para a capa (Thumb lighter)
+        const viewport = page.getViewport({ scale: 0.8 });
+        const canvas = document.createElement('canvas');
         canvas.width = viewport.width;
         canvas.height = viewport.height;
-
-        canvas.className =
-            'w-full h-full object-contain';
 
         await page.render({
             canvasContext: canvas.getContext('2d'),
             viewport
         }).promise;
 
+        const imgUrl = canvas.toDataURL('image/webp', 0.8);
+        try { localStorage.setItem(`cover_cache_${book.id}`, imgUrl); } catch(e) {}
+
+        const img = new Image();
+        img.src = imgUrl;
+        img.className = 'w-full h-full object-contain';
         container.innerHTML = '';
-        container.appendChild(canvas);
-
+        container.appendChild(img);
     } catch (error) {
-
-        console.error(
-            'Erro ao carregar capa:',
-            error
-        );
-
+        console.error('Erro ao carregar capa:', error);
+        container.innerHTML = `<div class="text-rose-300"><i class="fa-solid fa-book-open text-2xl"></i></div>`;
     }
 }
 
 function filterBooks() {
-
-    searchQuery =
-        document.getElementById('input-search').value;
-
+    searchQuery = document.getElementById('input-search').value;
     renderBooks();
 }
 
 function setCategory(category) {
-
     selectedCategory = category;
-
     document.querySelectorAll('.cat-btn').forEach(btn => {
-
-        const active =
-            btn.innerText.trim() === category;
-
+        const active = btn.innerText.trim() === category;
         btn.className = `cat-btn px-4 py-2 text-xs rounded-xl whitespace-nowrap ${
-            active
-                ? 'font-semibold bg-rose-500 text-white shadow-sm'
-                : 'font-medium bg-cream-100 text-charcoal-700 hover:bg-rose-100/60'
+            active ? 'font-semibold bg-rose-500 text-white shadow-sm' : 'font-medium bg-cream-100 text-charcoal-700 hover:bg-rose-100/60'
         }`;
-
     });
-
     renderBooks();
 }
 
 async function openReader(bookId) {
+    const book = books.find(b => b.id === bookId);
+    if (!book) return;
 
-    const book =
-        books.find(b => b.id === bookId);
+    const modal = document.getElementById('modal-reader');
+    const loading = document.getElementById('reader-loading');
+    const container = document.getElementById('flipbook');
 
-    if (!book) {
-        return;
-    }
-
-    const modal =
-        document.getElementById('modal-reader');
-
-    const loading =
-        document.getElementById('reader-loading');
-
-    const container =
-        document.getElementById('flipbook');
-
-    document.getElementById('reader-title').innerText =
-        book.title;
-
-    document.getElementById('reader-author').innerText =
-        book.author || 'Desconhecida';
-
-    document.getElementById('loading-text').innerText =
-        'Preparando sua leitura...';
-
-    document.getElementById('current-page').innerText =
-        '1';
-
-    document.getElementById('total-pages').innerText =
-        '--';
+    document.getElementById('reader-title').innerText = book.title;
+    document.getElementById('reader-author').innerText = book.author || 'Desconhecida';
+    document.getElementById('loading-text').innerText = 'Preparando sua leitura...';
+    document.getElementById('current-page').innerText = '1';
+    document.getElementById('total-pages').innerText = '--';
 
     modal.classList.remove('hidden');
     loading.classList.remove('hidden');
@@ -534,217 +334,130 @@ async function openReader(bookId) {
     container.innerHTML = '';
 
     if (pageFlipInstance) {
-
-        try {
-            pageFlipInstance.destroy();
-        } catch {}
-
+        try { pageFlipInstance.destroy(); } catch {}
         pageFlipInstance = null;
     }
 
     try {
+        const pdf = await getPdfDocument(book.pdfUrl);
+        const mobile = window.innerWidth < 640;
+        const width = mobile ? Math.min(window.innerWidth - 30, 360) : 440;
+        const height = mobile ? Math.floor(width * 1.35) : 590;
 
-        const pdf =
-            await pdfjsLib.getDocument(book.pdfUrl).promise;
+        document.getElementById('total-pages').innerText = pdf.numPages;
 
-        const mobile =
-            window.innerWidth < 640;
-
-        const width = mobile
-            ? Math.min(window.innerWidth - 30, 360)
-            : 440;
-
-        const height = mobile
-            ? Math.floor(width * 1.35)
-            : 590;
-
-        /*
-         * Cada página vem diretamente do PDF.
-         * A página 1 do PDF é a capa.
-         */
-
+        // Cria os containers das páginas com canvas em branco
+        const pageElements = [];
         for (let i = 1; i <= pdf.numPages; i++) {
-
-            const pageDiv =
-                document.createElement('div');
-
-            pageDiv.className =
-                'my-page flex items-center justify-center bg-white';
-
-            const canvas =
-                document.createElement('canvas');
-
-            canvas.className =
-                'w-full h-full object-contain';
-
+            const pageDiv = document.createElement('div');
+            pageDiv.className = 'my-page flex items-center justify-center bg-white';
+            
+            const canvas = document.createElement('canvas');
+            canvas.className = 'w-full h-full object-contain';
+            canvas.dataset.pageNumber = i;
+            
             pageDiv.appendChild(canvas);
             container.appendChild(pageDiv);
-
-            const page =
-                await pdf.getPage(i);
-
-            const viewport =
-                page.getViewport({ scale: 1.5 });
-
-            canvas.width =
-                viewport.width;
-
-            canvas.height =
-                viewport.height;
-
-            await page.render({
-                canvasContext:
-                    canvas.getContext('2d'),
-                viewport
-            }).promise;
-
+            pageElements.push(pageDiv);
         }
 
-        document.getElementById('total-pages').innerText =
-            pdf.numPages;
+        // Renderiza as 2 primeiras páginas primeiro para abrir rápido
+        await renderPdfPage(pdf, 1, container);
+        if (pdf.numPages > 1) await renderPdfPage(pdf, 2, container);
 
         loading.classList.add('hidden');
 
-        pageFlipInstance =
-            new St.PageFlip(container, {
+        pageFlipInstance = new St.PageFlip(container, {
+            width,
+            height,
+            size:'fixed',
+            minWidth:280,
+            maxWidth:600,
+            minHeight:380,
+            maxHeight:800,
+            maxShadowOpacity:.2,
+            showCover:true,
+            mobileScrollSupport:false,
+            useMouseEvents:true,
+            flippingTime:650,
+            drawShadow:true,
+            autoSize:true
+        });
 
-                width,
-                height,
+        pageFlipInstance.loadFromHTML(container.querySelectorAll('.my-page'));
 
-                size:'fixed',
-
-                minWidth:280,
-                maxWidth:600,
-
-                minHeight:380,
-                maxHeight:800,
-
-                maxShadowOpacity:.2,
-
-                showCover:true,
-
-                mobileScrollSupport:false,
-
-                useMouseEvents:true,
-
-                flippingTime:650,
-
-                drawShadow:true,
-
-                autoSize:true
-
-            });
-
-        pageFlipInstance.loadFromHTML(
-            container.querySelectorAll('.my-page')
-        );
+        // Renderiza o restante em segundo plano (Lazy Load)
+        renderRemainingPages(pdf, container);
 
         pageFlipInstance.on('flip', e => {
-
-            document.getElementById('current-page').innerText =
-                e.data + 1;
-
+            const pageNum = e.data + 1;
+            document.getElementById('current-page').innerText = pageNum;
+            // Garante que a página atual e as adjacentes estejam renderizadas ao folhear
+            renderPdfPage(pdf, pageNum, container);
+            if (pageNum + 1 <= pdf.numPages) renderPdfPage(pdf, pageNum + 1, container);
         });
 
     } catch (error) {
-
-        console.error(
-            'Erro ao carregar PDF:',
-            error
-        );
-
-        document.getElementById('loading-text').innerText =
-            'Não foi possível carregar este arquivo. Verifique se o PDF está disponível.';
-
+        console.error('Erro ao carregar PDF:', error);
+        document.getElementById('loading-text').innerText = 'Não foi possível carregar este arquivo.';
     }
 }
 
-function flipNext() {
+async function renderPdfPage(pdf, pageNum, container) {
+    const canvas = container.querySelector(`canvas[data-page-number="${pageNum}"]`);
+    if (!canvas || canvas.dataset.rendered === 'true') return;
 
-    if (pageFlipInstance) {
-        pageFlipInstance.flipNext();
-    }
+    canvas.dataset.rendered = 'true';
+    const page = await pdf.getPage(pageNum);
+    const viewport = page.getViewport({ scale: 1.2 });
 
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+
+    await page.render({
+        canvasContext: canvas.getContext('2d'),
+        viewport
+    }).promise;
 }
 
-function flipPrev() {
-
-    if (pageFlipInstance) {
-        pageFlipInstance.flipPrev();
+async function renderRemainingPages(pdf, container) {
+    for (let i = 3; i <= pdf.numPages; i++) {
+        await renderPdfPage(pdf, i, container);
     }
-
 }
+
+function flipNext() { if (pageFlipInstance) pageFlipInstance.flipNext(); }
+function flipPrev() { if (pageFlipInstance) pageFlipInstance.flipPrev(); }
 
 function closeReader() {
-
-    document.getElementById('modal-reader')
-        .classList.add('hidden');
-
+    document.getElementById('modal-reader').classList.add('hidden');
     if (pageFlipInstance) {
-
-        try {
-            pageFlipInstance.destroy();
-        } catch {}
-
+        try { pageFlipInstance.destroy(); } catch {}
         pageFlipInstance = null;
     }
-
     currentZoom = 1;
-
-    document.getElementById('flipbook-viewport')
-        .style.transform = 'scale(1)';
-
-    document.getElementById('zoom-level')
-        .innerText = '100%';
+    document.getElementById('flipbook-viewport').style.transform = 'scale(1)';
+    document.getElementById('zoom-level').innerText = '100%';
 }
 
 function changeZoom(delta) {
-
-    currentZoom = Math.min(
-        Math.max(.6, currentZoom + delta),
-        1.6
-    );
-
-    document.getElementById('flipbook-viewport')
-        .style.transform =
-        `scale(${currentZoom})`;
-
-    document.getElementById('zoom-level')
-        .innerText =
-        `${Math.round(currentZoom * 100)}%`;
+    currentZoom = Math.min(Math.max(.6, currentZoom + delta), 1.6);
+    document.getElementById('flipbook-viewport').style.transform = `scale(${currentZoom})`;
+    document.getElementById('zoom-level').innerText = `${Math.round(currentZoom * 100)}%`;
 }
 
 function toggleFullscreen() {
-
-    const modal =
-        document.getElementById('modal-reader');
-
+    const modal = document.getElementById('modal-reader');
     if (!document.fullscreenElement) {
-
-        if (modal.requestFullscreen) {
-            modal.requestFullscreen();
-        }
-
+        if (modal.requestFullscreen) modal.requestFullscreen();
     } else {
-
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        }
-
+        if (document.exitFullscreen) document.exitFullscreen();
     }
 }
 
 document.addEventListener('fullscreenchange', () => {
-
-    document.getElementById('fullscreen-icon').className =
-        `fa-solid ${
-            document.fullscreenElement
-                ? 'fa-compress'
-                : 'fa-expand'
-        } text-sm`;
-
+    document.getElementById('fullscreen-icon').className = `fa-solid ${document.fullscreenElement ? 'fa-compress' : 'fa-expand'} text-sm`;
 });
-
 </script>
 
 </body>
